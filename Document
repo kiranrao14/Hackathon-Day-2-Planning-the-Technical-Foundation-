@@ -1,0 +1,53 @@
+Marketplace Technical Foundation - [Comforty]
+1. System Architecture Overview
+Architecture Diagram
+Aapka system architecture diagram frontend, Sanity CMS aur third-party APIs ke beech ka interaction dikhaega:
+
+Frontend: User interface (React/Next.js) jo sofa aur chair products dekhne, cart manage karne aur order place karne ke liye use hota hai.
+Sanity CMS: Product data, inventory aur content manage karne ke liye backend system.
+Third-Party APIs: Payment gateway aur shipment tracking ke liye use kiya jaata hai.
+Database: Customer orders, payment status aur shipment details store karte hain.
+Diagram Description:
+
+Users Frontend se sofa aur chair products dekhte hain aur cart me add karte hain.
+Sanity CMS product details aur inventory updates provide karta hai.
+Orders aur payment details Database me store kiye jaate hain.
+Shipment details Third-Party APIs ke through track kiye jaate hain.
+2. Key Workflows
+2.1 User Adds Sofa/Chair to Cart
+Frontend: User sofa ya chair select karta hai aur quantity specify karta hai.
+API Endpoint: /cart (POST) ko call kiya jaata hai jisme product ID aur quantity hoti hai.
+Backend Logic:
+Product availability check ki jaati hai.
+Cart ko update kiya jaata hai.
+Response: Updated cart details return hoti hain.
+2 Order Placement for Sofa/Chair
+Frontend: User cart review karta hai aur "Place Order" pe click karta hai.
+API Endpoint: /orders (POST) ko call kiya jaata hai jisme:
+Customer details (name, email, address).
+Cart me jo sofa/chairs hain unki details.
+Payment status.
+Backend Logic:
+Stock validation hoti hai aur products reserve kiye jaate hain.
+Order ko database me store kiya jaata hai.
+Payment processing API ko trigger kiya jaata hai.
+Response: Order confirmation aur order ID milti hai.
+
+Track Sofa/Chair Order Shipment
+Frontend: User order ID enter karta hai shipment track karne ke liye.
+API Endpoint: /shipment (GET) ko call kiya jaata hai jisme order ID hoti hai.
+Third-Party API: Shipment status aur expected delivery date fetch ki jaati hai.
+Response: Shipment details user ko dikhayi jaati hain.
+General eCommerce
+Product Browsing (Sofa and Chair)
+API Endpoint: /products (GET)
+Sofa aur chair products ki list fetch ki jaati hai jisme product ID, name, price, stock, aur image hoti hai.
+Cart Management
+API Endpoint: /cart
+GET: Current user's cart ko retrieve karta hai.
+POST: Cart me sofa ya chair add karta hai.
+DELETE: Cart se product ko remove karta hai.
+Order Placement
+API Endpoint: /orders (POST)
+Order process karne ke liye aur confirmation response milta hai.
+
